@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames';
-import {Link} from 'react-router';
 
 
 
@@ -10,10 +9,10 @@ import {Link} from 'react-router';
 export default function Header({}) {
 	return (
 		<header className="Header">
-			<h1><Link to="/">Après le bip</Link></h1>
+			<h1><a href="/">Après le bip</a></h1>
 			<ul>
-				<li><Link to="/">Écouter un message</Link></li>
-				<li><Link to="/laisserunmessage">Laisser un message</Link></li>
+				<li><a href="/">Écouter un message</a></li>
+				<li><a href="/laisserunmessage">Laisser un message</a></li>
 			</ul>
 		</header>
 	);

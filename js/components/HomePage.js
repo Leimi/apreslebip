@@ -19,7 +19,8 @@ export default class HomePage extends Component {
 	render() {
 		return (
 			<Page className="HomePage">
-				<p>Un message arrive <span ref="time">dans 3...</span></p>
+				<p><strong>Un gros désolé : faute de temps, le site ne semble pas super bien fonctionner sur Safari ou iOS... Utilisez Firefox pour contribuer, voire Chrome pour seulement écouter.</strong></p>
+				<p ref="time">Un message arrive dans 3...</p>
 				{/*<audio ref="bip" style={{display: 'none'}} src={this.props.current} type="audio/wave" />*/}
 
 				{renderIf(this.props.current)(() =>
@@ -27,10 +28,10 @@ export default class HomePage extends Component {
 						<audio
 							ref="sound"
 							controls
-							src={this.props.current}
-							type="audio/wave"
-							style={{display: 'none', margin: 'auto'}}
-						/>
+ 							style={{display: 'none', margin: 'auto'}}
+						>
+							<source src={this.props.current} type="audio/wav" />
+						</audio>
 						<br />
 					</div>
 				)}
@@ -61,15 +62,15 @@ export default class HomePage extends Component {
 			}.bind(this), 3500);
 			setTimeout(function() {
 				if (this.refs.time)
-					this.refs.time.innerHTML = "dans 2...";
+					this.refs.time.innerHTML = "Un message arrive dans 2...";
 			}.bind(this), 1000);
 			setTimeout(function() {
 				if (this.refs.time)
-					this.refs.time.innerHTML = "dans 1...";
+					this.refs.time.innerHTML = "Un message arrive dans 1...";
 			}.bind(this), 2000);
 			setTimeout(function() {
 				if (this.refs.time)
-					this.refs.time.innerHTML = "tout de suite.";
+					this.refs.time.innerHTML = "Allô ?";
 			}.bind(this), 3000);
 		}
 	}

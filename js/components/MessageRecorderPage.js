@@ -21,7 +21,7 @@ export default function MessageRecorderPage({
 	return (
 		<Page className="MessageRecorderPage">
 			<Recorder />
-			<p><strong>Un gros désolé : temps limité oblige, vous ne pouvez PAS laisser de message avec Chrome ! Lancez Firefox, merci beaucoup :)</strong></p>
+			<p><strong>Un gros désolé : temps limité oblige, vous ne pouvez PAS laisser de message avec tous les navigateurs ! Lancez Firefox, merci beaucoup :)</strong></p>
 			<button type="button"
 				className="Button MessageRecorderPage-button"
 				onClick={isRecording
