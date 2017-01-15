@@ -1,0 +1,38 @@
+.Header {
+	padding: 15px;
+	margin-bottom: 45px;
+	border-bottom: 2px solid #bbb;
+	border-left: 0;
+	border-right: 0;
+	background: #fff;
+}
+
+.Header h1 {
+	margin: 0;
+}
+
+.Header h1, ul, li {
+	display: inline-block;
+}
+
+.Header ul {
+	margin: 0;
+}
+
+.Header li {
+	margin: 0 15px;
+}
+
+.Header a {
+	color: #FA0D50;
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+
+	&:active {
+		text-decoration: none;
+	}
+}

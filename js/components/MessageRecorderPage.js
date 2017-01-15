@@ -22,32 +22,31 @@ export default function MessageRecorderPage({
 		<Page className="MessageRecorderPage">
 			<Recorder />
 				<button type="button"
-					className="MessageRecorderPage-button"
+					className="Button MessageRecorderPage-button"
 					onClick={isRecording
 						? onStop
 						: onStart
 					}
 				>
-					{isRecording ? "Arrêter l\'enregistrement" : "Démarrer l\'enregistrement"}
+					{isRecording ? "Arrêter l\'enregistrement" : "Laisser un message"}
 				</button>
 				<br />
 				<br />
 				{renderIf(!isRecording && url && !sent)(() =>
 					<div>
-						<audio
+						<p>Vérifiez avant d'envoyer &nbsp; <audio
 							type="audio/wav"
 							src={url}
 							controls
-						/>
-						<br />
-						<br />
-						<button type="button" onClick={partial(onSend, toSend)}>Envoyer le message</button>
-						<button type="button" onClick={onCancel}>Annuler</button>
+						/></p>
+						<button type="button" className="Button mb-15" onClick={partial(onSend, toSend)}>Envoyer le message</button>&nbsp;
+						<button type="button" className="Button mb-15" onClick={onCancel}>Annuler</button>
 					</div>
 				)}
 				{renderIf(!isRecording && url && sent)(() =>
 					<p>Message envoyé !</p>
 				)}
+				<img src={isRecording ? "/telephone-2.png" : "/telephone.png"} alt="Téléphone" />
 		</Page>
 	);
 }

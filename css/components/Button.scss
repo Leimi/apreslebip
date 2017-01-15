@@ -1,0 +1,19 @@
+.Button {
+	display: inline-block;
+	padding: 15px 25px;
+	background: rgba(#FA0D50, 0.9);
+	color: #fff;
+	font-size: 20px;
+	border: 1px solid #C70D42;
+	border-radius: 7.5px;
+	cursor: pointer;
+}
+
+.Button:hover,
+.Button:focus {
+	background: rgba(#C70D42, 0.9);
+}
+
+.Button:active {
+	background: rgba(#FA0D50, 0.9);
+}

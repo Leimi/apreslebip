@@ -9,14 +9,14 @@ $app->get('/laisserunmessage', function ($request, $response, $args) {
 	return $this->renderer->render($response, 'index.phtml', $args);
 });
 
-function getRandomFile($dir) {
-	$files = glob($dir . '/*.*');
+function getRandomSound($dir) {
+	$files = glob($dir . '/*.wav');
 	$file = array_rand($files);
 	return $files[$file];
 }
 
 $app->get('/unmessage', function($request, $response, $args) {
-	$randomMessage = '/messages/' . basename(getRandomFile(__DIR__ . '/../public/messages'));
+	$randomMessage = '/messages/' . basename(getRandomSound(__DIR__ . '/../public/messages'));
 	return $response->withJson(['file' => $randomMessage]);
 });
 

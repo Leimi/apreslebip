@@ -19,18 +19,59 @@ export default class HomePage extends Component {
 	render() {
 		return (
 			<Page className="HomePage">
-				<button type="button" onClick={this.play}>Ecouter un message...</button>
+				<p>Un message arrive <span ref="time">dans 3...</span></p>
+				{/*<audio ref="bip" style={{display: 'none'}} src={this.props.current} type="audio/wave" />*/}
 
 				{renderIf(this.props.current)(() =>
-					<audio ref="sound" style={{display: 'none'}} src={this.props.current} type="audio/wave" />
+					<div>
+						<audio
+							ref="sound"
+							controls
+							src={this.props.current}
+							type="audio/wave"
+							style={{display: 'none', margin: 'auto'}}
+						/>
+						<br />
+					</div>
 				)}
+				<img onClick={this.toggle} ref="img" src="/telephone.png" alt="Téléphone" />
 			</Page>
 		);
 	}
 
+	componentDidMount() {
+		this.play();
+	}
+
+	componentDidUpdate() {
+		this.play();
+	}
+
 	play() {
-		this.refs.sound.play();
-		this.props.onPlay();
+		if (this.props.current) {
+			// setTimeout((function() {
+			// 	this.refs.bip.play();
+			// }).bind(this), 2000);
+			setTimeout(function() {
+				if (this.refs.sound) {
+					this.refs.sound.play();
+					this.refs.sound.style.display = 'block';
+					this.refs.img.src = "/telephone-2.png";
+				}
+			}.bind(this), 3500);
+			setTimeout(function() {
+				if (this.refs.time)
+					this.refs.time.innerHTML = "dans 2...";
+			}.bind(this), 1000);
+			setTimeout(function() {
+				if (this.refs.time)
+					this.refs.time.innerHTML = "dans 1...";
+			}.bind(this), 2000);
+			setTimeout(function() {
+				if (this.refs.time)
+					this.refs.time.innerHTML = "tout de suite.";
+			}.bind(this), 3000);
+		}
 	}
 }
 

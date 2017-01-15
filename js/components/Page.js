@@ -8,10 +8,10 @@ import Header from './Header';
  */
 export default function Page({className, children}) {
 	return (
-		<div className="Page">
+		<div>
 			<Header />
 
-			<main className={classNames("Page-main", className)}>
+			<main className={classNames("Page", className)}>
 				{children}
 			</main>
 		</div>

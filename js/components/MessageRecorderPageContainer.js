@@ -29,6 +29,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	},
 	onSend(blob) {
 		dispatch(send(blob));
+	},
+	onCancel() {
+		window.location.reload();
 	}
 });
 
