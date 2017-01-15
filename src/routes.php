@@ -2,9 +2,38 @@
 // Routes
 
 $app->get('/', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
+	return $this->renderer->render($response, 'index.phtml', $args);
+});
 
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+$app->get('/laisserunmessage', function ($request, $response, $args) {
+	return $this->renderer->render($response, 'index.phtml', $args);
+});
+
+function getRandomFile($dir) {
+	$files = glob($dir . '/*.*');
+	$file = array_rand($files);
+	return $files[$file];
+}
+
+$app->get('/unmessage', function($request, $response, $args) {
+	$randomMessage = '/messages/' . basename(getRandomFile(__DIR__ . '/../public/messages'));
+	return $response->withJson(['file' => $randomMessage]);
+});
+
+$app->post('/laisserunmessage', function ($request, $response, $args) {
+	$parsedBody = $request->getParsedBody();
+	if (empty($parsedBody['data']) || empty($parsedBody['fname'])) {
+		die;
+	}
+	$data = substr($parsedBody['data'], strpos($parsedBody['data'], ",") + 1);
+	$audioData = base64_decode($data);
+	$filename = $parsedBody['fname'];
+	$filepath = __DIR__ . '/../public/messages/' . $filename;
+	$fp = fopen($filepath, 'wb');
+	fwrite($fp, $audioData);
+	fclose($fp);
+	$data = realpath($filepath)
+		? ['status' => 'success']
+		: ['status' => 'error'];
+    return $response->withJson($data);
 });
