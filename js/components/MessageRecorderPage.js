@@ -21,32 +21,33 @@ export default function MessageRecorderPage({
 	return (
 		<Page className="MessageRecorderPage">
 			<Recorder />
-				<button type="button"
-					className="Button MessageRecorderPage-button"
-					onClick={isRecording
-						? onStop
-						: onStart
-					}
-				>
-					{isRecording ? "Arrêter l\'enregistrement" : "Laisser un message"}
-				</button>
-				<br />
-				<br />
-				{renderIf(!isRecording && url && !sent)(() =>
-					<div>
-						<p>Vérifiez avant d'envoyer &nbsp; <audio
-							type="audio/wav"
-							src={url}
-							controls
-						/></p>
-						<button type="button" className="Button mb-15" onClick={partial(onSend, toSend)}>Envoyer le message</button>&nbsp;
-						<button type="button" className="Button mb-15" onClick={onCancel}>Annuler</button>
-					</div>
-				)}
-				{renderIf(!isRecording && url && sent)(() =>
-					<p>Message envoyé !</p>
-				)}
-				<img src={isRecording ? "/telephone-2.png" : "/telephone.png"} alt="Téléphone" />
+			<p><strong>Un gros désolé : temps limité oblige, vous ne pouvez PAS laisser de message avec Chrome ! Lancez Firefox, merci beaucoup :)</strong></p>
+			<button type="button"
+				className="Button MessageRecorderPage-button"
+				onClick={isRecording
+					? onStop
+					: onStart
+				}
+			>
+				{isRecording ? "Arrêter l\'enregistrement" : "Laisser un message"}
+			</button>
+			<br />
+			<br />
+			{renderIf(!isRecording && url && !sent)(() =>
+				<div>
+					<p>Vérifiez avant d'envoyer &nbsp; <audio
+						type="audio/wav"
+						src={url}
+						controls
+					/></p>
+					<button type="button" className="Button mb-15" onClick={partial(onSend, toSend)}>Envoyer le message</button>&nbsp;
+					<button type="button" className="Button mb-15" onClick={onCancel}>Annuler</button>
+				</div>
+			)}
+			{renderIf(!isRecording && url && sent)(() =>
+				<p>Message envoyé !</p>
+			)}
+			<img src={isRecording ? "/telephone-2.png" : "/telephone.png"} alt="Téléphone" />
 		</Page>
 	);
 }
