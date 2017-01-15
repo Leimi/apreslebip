@@ -59,7 +59,7 @@ export default class HomePage extends Component {
 					this.refs.sound.style.display = 'block';
 					this.refs.img.src = "/telephone-2.png";
 				}
-			}.bind(this), 3500);
+			}.bind(this), 3000);
 			setTimeout(function() {
 				if (this.refs.time)
 					this.refs.time.innerHTML = "Un message arrive dans 2...";
